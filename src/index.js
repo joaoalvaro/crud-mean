@@ -13,8 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({extend: false}));
 
 //Routes
-
-
+app.use(require('./routes/routes'));
 
 app.listen(app.get('port'), () => {
     console.log("Servidor rodando na " + app.get('port'))
