@@ -30,7 +30,7 @@ export class CarsService {
 
     updateCars(newCar) {
         return this.http.put<Car>(`${this.domain}/api/cars/${newCar._id}`, newCar)
-            .map(res => res)
+            .map(res => res);
     }
 
 }
