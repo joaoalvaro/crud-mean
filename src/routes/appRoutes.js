@@ -34,7 +34,7 @@ router.post('/cars', (req, res, next) => {
             error: 'Informe a marca'
         });
     } else {
-        db.cars.save(task, (err, task) => {
+        db.cars.save(car, (err, car) => {
             if(err) {
                 return next(err);
             } else {
@@ -66,8 +66,8 @@ router.put('/cars/:id', (req, res, next) => {
         updateCar.model = car.model;
     }
 
-    if(car.collor) {
-        updateCar.collor = car.collor;
+    if(car.color) {
+        updateCar.color = car.color;
     }
 
     if (!updateCar) {
@@ -75,7 +75,7 @@ router.put('/cars/:id', (req, res, next) => {
             error: 'Sem dados para atualizar.'
         });
     } else {
-        db.cars.update({ _id: mongojs.ObjectId(req.params.id)}, (err, car) => {
+        db.cars.update({ _id: mongojs.ObjectId(req.params.id)}, updateCar, (err, car) => {
             if(err) {
                 return next(err);
             } else {
