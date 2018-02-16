@@ -1,0 +1,31 @@
+<div class="car">
+    <div class="card-body">
+        <h4 class="card-title">Marcas/Carros</h4>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Cor</th>
+                    <th>CRUD</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let car of cars">
+                    <td>{{ car.brand }}</td>
+                    <td>{{ car.model }}</td>
+                    <td>{{ car.color }}</td>
+
+                    <td>
+                        <button class="btn btn-danger" (click)="deleteCar(car)">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                        <button class="btn btn-success" (click)="updateCar(car)">
+                            <i class="fa fa-refresh"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
