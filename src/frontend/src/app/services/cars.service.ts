@@ -1,36 +1,39 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import { Car } from '../Car';
-import { HttpHeaders } from '@angular/common/http';
+import { Car } from 'app/Car';
 
 @Injectable()
 
 export class CarsService {
-
-    domain: string = 'http://localhost:3000';
+    private car: Car;
+    private baseUrl: string = 'http://localhost:3000';
+    private headers = new HttpHeaders().set('Content-Type', 'aplication/json');
 
     constructor(private http: HttpClient) { }
 
 
     getCars() {
-        return this.http.get<Car[]>(`${this.domain}/api/cars`)
-            .map(res => res);
+        return this.http.get(`${this.baseUrl}/api/read`, {headers: this.headers});
     }
 
-    addCars(newCar: Car) {
-        return this.http.post<Car>(`${this.domain}/api/cars`, newCar)
-            .map(res => res);
+    addCar(newCar: Car) {
+        return this.http.post(`${this.baseUrl}/api/create`, newCar, {headers: this.headers});
     }
 
-    deleteCars(id) {
-        return this.http.delete<Car>(`${this.domain}/api/cars/${id}`)
-            .map(res => res);
+    updateCar(newCar: Car) {
+        return this.http.put(`${this.baseUrl}/api/update/`, newCar, {headers: this.headers});
     }
 
-    updateCars(newCar) {
-        return this.http.put<Car>(`${this.domain}/api/cars/${newCar._id}`, newCar)
-            .map(res => res);
+    deleteCar(id: string) {
+        return this.http.delete(`${this.baseUrl}/api/delete/${id}`, {headers: this.headers});
     }
 
+    setter(car: Car) {
+        this.car = car;
+    }
+
+    getter() {
+        return this.car;
+    }
 }
