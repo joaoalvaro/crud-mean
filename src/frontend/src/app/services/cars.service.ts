@@ -1,32 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-import { Car } from 'app/Car';
+import { Car } from '../Car';
 
 @Injectable()
 
 export class CarsService {
     private car: Car;
     private baseUrl: string = 'http://localhost:3000';
-    private headers = new HttpHeaders().set('Content-Type', 'aplication/json');
+    private headers = new HttpHeaders().set('Content-Type', 'application/json');
 
     constructor(private http: HttpClient) { }
 
 
-    getCars() {
-        return this.http.get(`${this.baseUrl}/api/read`, {headers: this.headers});
+    addCar(newCar: Car) {
+        return this.http.post(`${this.baseUrl}/create`, newCar, {headers: this.headers});
     }
 
-    addCar(newCar: Car) {
-        return this.http.post(`${this.baseUrl}/api/create`, newCar, {headers: this.headers});
+    getCars() {
+        return this.http.get(`${this.baseUrl}/read`, {headers: this.headers});
     }
 
     updateCar(newCar: Car) {
-        return this.http.put(`${this.baseUrl}/api/update/`, newCar, {headers: this.headers});
+        return this.http.put(`${this.baseUrl}/update/`, newCar, {headers: this.headers});
     }
 
     deleteCar(id: string) {
-        return this.http.delete(`${this.baseUrl}/api/delete/${id}`, {headers: this.headers});
+        return this.http.delete(`${this.baseUrl}/delete/${id}`, {headers: this.headers});
     }
 
     setter(car: Car) {
