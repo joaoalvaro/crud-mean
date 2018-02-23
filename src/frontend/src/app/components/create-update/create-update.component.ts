@@ -21,8 +21,7 @@ export class CreateUpdateComponent implements OnInit {
     createOrUpdate() {
         if (this.car._id == undefined) {
             this.carsService.addCar(this.car)
-                .subscribe(data => {
-                    console.log(data);
+                .subscribe((data) => {
                     this.router.navigate(['/']);
                 },
                     (error) => {
@@ -31,8 +30,7 @@ export class CreateUpdateComponent implements OnInit {
                 )
         } else {
             this.carsService.updateCar(this.car)
-                .subscribe(data => {
-                    console.log(data);
+                .subscribe((data) => {
                     this.router.navigate(['/']);
                 },
                     (error) => {
