@@ -7,8 +7,6 @@ const appRoutes = require('./routes/appRoutes');
 
 mongoose.connect('mongodb://localhost/crud-mean-db');
 
-
-
 //Settings
 app.set('views', path.join(__dirname, 'views'));
 app.set('port', process.env.PORT || 3000);
@@ -22,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({extend: true}));
 
 //Routes
-app.use('/api', appRoutes);
+app.use('/', appRoutes);
 
 //Static files
 app.use(express.static(path.join(__dirname, 'dist')));
