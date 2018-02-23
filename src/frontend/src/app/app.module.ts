@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CarsComponent } from 'app/components/cars/cars.component';
 import { CarsService } from 'app/services/cars.service';
 import { CreateUpdateComponent } from './components/create-update/create-update.component';
 import { ListComponent } from './components/list/list.component';
@@ -19,7 +18,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    CarsComponent,
     CreateUpdateComponent,
     ListComponent,
     NavbarComponent
